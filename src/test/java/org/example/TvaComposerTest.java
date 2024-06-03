@@ -15,7 +15,12 @@ public class TvaComposerTest extends TestCase {
     protected TvaComposer tvaComposer = new TvaComposer();
     protected ArrayList<Operation> operationsPp, operationsPpa, operationsPm, operationsPmA;
 
-    public void setUp() throws Exception {
+    public void setUp() {
+
+        /*
+        Au mois d’août 2024, les acquisitions de la société X (SARL) se présentent
+        comme suit :
+        **/
 
         Client pmc = new PmClient(true);
         OperationType operationPsType = OperationType.PRESTATIONDESERVICE;
@@ -82,6 +87,7 @@ public class TvaComposerTest extends TestCase {
     }
 
     public void testCalculerRasParMoisParFrs() {
+        System.out.println("Le traitement des retenues à la source en matière de TVA au titre des opérations précitées se fera comme suit :\n");
         assertEquals(5000.0, tvaComposer.calculerRasParMoisParFrs(operationsPp));
         assertEquals(6187.5, tvaComposer.calculerRasParMoisParFrs(operationsPpa));
         assertEquals(100000.0, tvaComposer.calculerRasParMoisParFrs(operationsPm));
