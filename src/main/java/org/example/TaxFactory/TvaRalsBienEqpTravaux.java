@@ -15,7 +15,7 @@ public class TvaRalsBienEqpTravaux implements TvaRalsFactory {
 
         }
 
-        if (operation.getFournisseur().isHasAttestationDeRegularite() ){
+        if (operation.getFournisseur().isHasAttestationDeRegularite()) {
             return 0;
         }
 

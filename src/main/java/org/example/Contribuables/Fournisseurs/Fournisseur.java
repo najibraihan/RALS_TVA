@@ -6,7 +6,7 @@ public class Fournisseur extends Contribuable {
 
     protected boolean hasAttestationDeRegularite = false;
 
-    public Fournisseur(boolean assujet, boolean attestation){
+    public Fournisseur(boolean assujet, boolean attestation) {
         super(assujet);
         hasAttestationDeRegularite = attestation;
     }
