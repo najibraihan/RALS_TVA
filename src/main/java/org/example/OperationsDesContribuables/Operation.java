@@ -4,6 +4,9 @@ import org.example.Contribuables.Clients.Client;
 import org.example.Contribuables.Fournisseurs.Fournisseur;
 
 
+/**
+ * Operation effectuee
+ */
 public class Operation {
 
     protected OperationType operationType;

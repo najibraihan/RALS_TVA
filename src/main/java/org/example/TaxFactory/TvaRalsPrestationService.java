@@ -7,8 +7,15 @@ import org.example.OperationsDesContribuables.Operation;
 
 import java.util.Arrays;
 
+/**
+ * TvaRalsPrestationService : RALS factory de "Prestations de services"
+ */
 public class TvaRalsPrestationService implements TvaRalsFactory {
 
+    /**
+     * Prestations de services exclues de la retenue à la source
+     * visée à l’article 117 (IV et V)
+     */
     static final String[] prestationExclues = new String[]{
             "ventes_energie_electrique",
             "eau_reseaux_distribution_publique",
@@ -18,11 +25,21 @@ public class TvaRalsPrestationService implements TvaRalsFactory {
             "agent_demarcheur_courtier_assurances"
     };
 
+    /**
+     * @param operation: l'operation effectuee
+     * @return exclue ou non
+     */
     public static boolean verifierSiExclus(Operation operation) {
         return Arrays.stream(prestationExclues).anyMatch(prestation -> prestation.equals(operation.getOperationTitre()));
     }
 
 
+    /**
+     * Calculer le taux de la RAS concerant "Prestations de services"
+     *
+     * @param operation: l'operation effectuee
+     * @return Le taux de RAS
+     */
     public static double calculateRalsTaux(Operation operation) {
 
         if (verifierSiExclus(operation)) {
