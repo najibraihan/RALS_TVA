@@ -2,9 +2,17 @@ package org.example.Contribuables.Fournisseurs;
 
 import org.example.Contribuables.Contribuable;
 
+/**
+ * Fournisseur
+ */
 public class Fournisseur extends Contribuable {
 
-    protected boolean hasAttestationDeRegularite = false;
+    /**
+     * ayant présenté l’attestation justifiant leur régularité fiscale précitée au titre des obligations
+     * de déclaration et de paiement des impôts, droits et taxes prévus par le CGI ou non ?
+     */
+    protected boolean hasAttestationDeRegularite;
+
 
     public Fournisseur(boolean assujet, boolean attestation) {
         super(assujet);

@@ -1,8 +1,14 @@
 package org.example.Contribuables;
 
-public abstract class Contribuable {
+/**
+ * Classe de Contribuable
+ */
+public class Contribuable {
 
-    protected boolean isAssujettis = false;
+    /**
+     * les clients/fournisseurs assujettis ou non ?
+     */
+    protected boolean isAssujettis;
 
     public Contribuable(boolean assujet) {
         isAssujettis = assujet;

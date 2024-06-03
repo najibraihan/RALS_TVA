@@ -9,6 +9,9 @@ import org.example.TaxFactory.TvaRalsPrestationService;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * TvaComposer: TVA Mixer
+ */
 public class TvaComposer implements TaxImpotComposer {
 
     @Override
@@ -27,8 +30,8 @@ public class TvaComposer implements TaxImpotComposer {
     }
 
 
-    @Override
     public double calculerBetRasParMoisParFrs(ArrayList<Operation> operations) {
+//      calculer RAS de fourniment des biens EQ/TV  par mois et par fournisseur
         List<Operation> operationsBet = TaxFacade.filterBetOperations(operations);
 
         return operationsBet.stream()
@@ -36,9 +39,9 @@ public class TvaComposer implements TaxImpotComposer {
 
     }
 
-    @Override
-    public double calculerPreServRasParMoisParFrs(ArrayList<Operation> operations) {
 
+    public double calculerPreServRasParMoisParFrs(ArrayList<Operation> operations) {
+//      calculer RAS des Presta par mois et par fournisseur
         double sm = 0, montantDepassePlafondCinqMilles = 0, smi = 0;
         int indiceOperationDepasseCinquanteMilles = -1;
 
