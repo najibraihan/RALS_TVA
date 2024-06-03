@@ -7,7 +7,7 @@ import org.example.OperationsDesContribuables.Operation;
 
 import java.util.Arrays;
 
-public class TvaRalsPrestationService implements TvaRalsFactory{
+public class TvaRalsPrestationService implements TvaRalsFactory {
 
     static final String[] prestationExclues = new String[]{
             "ventes_energie_electrique",
@@ -18,26 +18,22 @@ public class TvaRalsPrestationService implements TvaRalsFactory{
             "agent_demarcheur_courtier_assurances"
     };
 
-    public static boolean verifierSiExclus(Operation operation){
+    public static boolean verifierSiExclus(Operation operation) {
         return Arrays.stream(prestationExclues).anyMatch(prestation -> prestation.equals(operation.getOperationTitre()));
     }
 
 
     public static double calculateRalsTaux(Operation operation) {
 
-        if (verifierSiExclus(operation)){
+        if (verifierSiExclus(operation)) {
             return 0;
-        }
-        else if (operation.getClient() instanceof PuplicClient) {
+        } else if (operation.getClient() instanceof PuplicClient) {
             return 0.75;
-        }
-        else if (operation.getFournisseur() instanceof PmFournisseur) {
+        } else if (operation.getFournisseur() instanceof PmFournisseur) {
             return 0;
-        }
-        else if (operation.getFournisseur().isHasAttestationDeRegularite()) {
+        } else if (operation.getFournisseur().isHasAttestationDeRegularite()) {
             return 0.75;
-        }
-        else {
+        } else {
             return 1;
         }
 

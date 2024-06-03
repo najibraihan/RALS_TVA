@@ -14,9 +14,9 @@ public class TvaComposer implements TaxImpotComposer {
     @Override
     public double calculerRasParOperationParFrs(Operation operation) {
 
-        if (operation.getOperationType().equals(OperationType.BIENEQUIPEMENTSTRAVAUX)){
+        if (operation.getOperationType().equals(OperationType.BIENEQUIPEMENTSTRAVAUX)) {
 
-            return TvaRalsBienEqpTravaux.calculateRalsTaux(operation)* TaxFacade.calculerTva(operation);
+            return TvaRalsBienEqpTravaux.calculateRalsTaux(operation) * TaxFacade.calculerTva(operation);
 
         } else if (operation.getOperationType().equals(OperationType.PRESTATIONDESERVICE)) {
 
@@ -44,20 +44,20 @@ public class TvaComposer implements TaxImpotComposer {
 
         List<Operation> operationsPs = TaxFacade.filterPsOperations(operations);
 
-        for (Operation operation: operationsPs) {
+        for (Operation operation : operationsPs) {
 
-            if(operation.getMontant() >= 5000){
+            if (operation.getMontant() >= 5000) {
                 montantDepassePlafondCinqMilles += TaxFacade.calculerPsRasParOperationParFrs(operation);
             }
 
             sm += operation.getMontant();
-            if(sm >= 50000){
+            if (sm >= 50000) {
                 indiceOperationDepasseCinquanteMilles = operationsPs.indexOf(operation);
                 break;
             }
         }
 
-        if (indiceOperationDepasseCinquanteMilles != -1){
+        if (indiceOperationDepasseCinquanteMilles != -1) {
             smi = operationsPs.subList(indiceOperationDepasseCinquanteMilles, operationsPs.size()).stream()
                     .map(this::calculerRasParOperationParFrs).reduce((double) 0, Double::sum);
 

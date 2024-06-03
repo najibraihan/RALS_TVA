@@ -1,6 +1,6 @@
 package org.example.Contribuables.Clients;
 
-public class PuplicClient extends Client{
+public class PuplicClient extends Client {
 
     protected boolean isReglementationMarchePublic = false;
 

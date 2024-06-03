@@ -4,7 +4,7 @@ public abstract class Contribuable {
 
     protected boolean isAssujettis = false;
 
-    public Contribuable(boolean assujet){
+    public Contribuable(boolean assujet) {
         isAssujettis = assujet;
     }
 
